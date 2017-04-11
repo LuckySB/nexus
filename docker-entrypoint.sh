@@ -15,7 +15,7 @@ if [ "$1" = 'bin/nexus' ]; then
     grep \
       -q "application-port-ssl" "${NEXUS_HOME}/etc/nexus-default.properties" || \
       sed \
-        -e "\|application-port|a\application-port-ssl=8443" \
+        -e "\|application-port|a\application-port-ssl=${PORT0}" \
         -i "${NEXUS_HOME}/etc/nexus-default.properties"
   fi
 
