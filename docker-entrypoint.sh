@@ -17,6 +17,10 @@ if [ "$1" = 'bin/nexus' ]; then
       sed \
         -e "\|application-port|a\application-port-ssl=${PORT0}" \
         -i "${NEXUS_HOME}/etc/nexus-default.properties"
+  else
+    sed \
+      -e "s|application-port=.*|application-port=${PORT0}|" \
+      -i "${NEXUS_HOME}/etc/nexus-default.properties"
   fi
 
   sed \
