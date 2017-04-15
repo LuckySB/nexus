@@ -1,6 +1,6 @@
 FROM alpine:3.4
 
-MAINTAINER cavemandaveman <cavemandaveman@openmailbox.org>
+MAINTAINER s.bondarev <s.bondarev@southbridge.ru>
 
 ENV SONATYPE_DIR="/opt/sonatype"
 ENV NEXUS_VERSION="3.3.0-01" \
@@ -20,7 +20,7 @@ RUN set -x \
     && wget -qO - "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz" \
     | tar -zxC "${SONATYPE_DIR}" \
     && mv "${SONATYPE_DIR}/nexus-${NEXUS_VERSION}" "${NEXUS_HOME}" \
-    && adduser -S -h ${NEXUS_DATA} nexus
+    && adduser -u 100 -S -h ${NEXUS_DATA} nexus
 
 EXPOSE 5000 8081 8443
 
